@@ -1,0 +1,137 @@
+**CODE FOR TEST.8xp**
+CLASSIC
+ClrHome
+ClrAllLists
+0→S
+2→X
+4→Y
+12→H
+4→V
+0→K
+4→C
+0→I
+0→dim(L₁)
+0→dim(L₂)
+(H+1)→E
+V→F
+Output(Y,X,">"
+While K≠45
+0→K
+1→J
+getKey→K
+If K=24 and X>1
+Then
+Output(Y,X," "
+(X-1)→X
+End
+If K=34 and Y<8
+Then
+Output(Y,X," "
+(Y+1)→Y
+End
+If K=25 and Y>1
+Then
+Output(Y,X," "
+(Y-1)→Y
+End
+If K=26 and X<16
+Then
+Output(Y,X," "
+(X+1)→X
+End
+If K≠0
+Output(Y,X,">"
+If 105=K
+Then
+X→L₁(I+1)
+Y→L₂(I+1)
+(I+1)→I
+End
+1→J
+While J≤I
+If L₁(J)+1=H and L₂(J)=V
+Then
+12→H
+4→V
+1→C
+(S+1)→S
+End
+If L₁(J)>15
+Then
+Output(L₂(J),16," ")
+prgmREMDEX
+Else
+If L₁(J)=X
+Then
+Output(L₂(J),L₁(J),">-")
+Else
+Output(L₂(J),L₁(J)," -")
+End
+(L₁(J)+1)→L₁(J)
+(J+1)→J
+End
+End
+1→J
+If remainder(C,6)=0
+Then
+prgmRALIEN
+randInt(­1,1)+H→H
+randInt(­1,1)+V→V
+If H=16
+(H-1)→H
+If H=1
+(H+1)→H
+If V=1
+(V+1)→V
+If V=8
+(V-1)→V
+prgmALIEN
+End
+Output(F,E,"+ "
+If H=(E+1)
+Output(V,H,"*")
+(E-1)→E
+If E=0
+Then
+Output(F,E+1," ")
+(H-1)→E
+V→F
+End
+If X=E and Y=F
+Then
+ClrHome
+ClrAllLists
+Disp "GAME OVER"
+Disp "SCORE:"
+Disp S
+Stop
+End
+(C+1)→C
+End
+ClrAllLists
+MATHPRINT
+
+**CODE FOR ALIEN.8xp**
+Output(V,H,"*")
+
+**CODE FOR RALIEN.8xp**
+Output(V,H," ")
+
+**CODE FOR REMDEX.8xp**
+If J=I
+Then
+(I-1)→I
+I→dim(L₁)
+I→dim(L₂)
+Return
+End
+If J=1
+Then
+seq(L₁(K),K,2,I,1)→L₁
+seq(L₂(K),K,2,I,1)→L₂
+(I-1)→I
+Return
+End
+augment(seq(L₁(K),K,1,J-1,1),seq(L₁(O),O,J+1,I,1))→L₁
+augment(seq(L₂(K),K,1,J-1,1),seq(L₂(O),O,J+1,I,1))→L₂
+(I-1)→I
